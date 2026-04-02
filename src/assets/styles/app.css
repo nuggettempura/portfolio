@@ -1,40 +1,109 @@
 @import "tailwindcss";
+@import "./fonts.css";
 
-:root {
-  --font-size: 16px;
-  --font-family: "Manrope", sans-serif;
-  --primary-color: #f9bc60;
-  --headline-color: #fffffe;
-  --color: #abd1c6;
-  --base-white-color: #abd1c6;
-  --base-black-color: #0f3433;
-  --bg-color: #004643;
-}
-
+/* ─────────────────────────────────────────
+   THEME — Tailwind v4 design tokens
+   ───────────────────────────────────────── */
 @theme {
-  --color-primary: #f9bc60;
-  --color-headline: #fffffe;
-  --color-base: #abd1c6;
-  --color-base-white: #abd1c6;
-  --color-base-black: #0f3433;
   --color-bg: #004643;
+  --color-surface: #e8e4e6;
+  --color-card: #0f3433;
+  --color-deep: #001e1d;
 
+  --color-headline: #fffffe;
+  --color-paragraph: #abd1c6;
+  --color-heading-dark: #001e1d;
+
+  --color-primary: #f9bc60;
+  --color-primary-text: #001e1d;
+  --color-tertiary: #e16162;
+
+  --font-family: "Manrope", sans-serif;
   --font-size-base: 16px;
-  --font-family-sans: "Manrope", sans-serif;
 }
 
-@utility bg-color {
+/* ─────────────────────────────────────────
+   CSS CUSTOM PROPERTIES
+   ───────────────────────────────────────── */
+:root {
+  --bg-color: #004643;
+  --surface-color: #e8e4e6;
+  --card-color: #0f3433;
+  --deep-color: #001e1d;
+
+  --headline-color: #fffffe;
+  --paragraph-color: #abd1c6;
+  --heading-dark-color: #001e1d;
+
+  --primary-color: #f9bc60;
+  --primary-text-color: #001e1d;
+  --tertiary-color: #e16162;
+
+  --font-family: "Manrope", sans-serif;
+  --font-size: 16px;
+}
+
+/* ─────────────────────────────────────────
+   BASE RESET & GLOBAL STYLES
+   ───────────────────────────────────────── */
+html {
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
   background-color: var(--bg-color);
+  color: var(--paragraph-color);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-@utility headline-color {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--headline-color);
+  line-height: 1.2;
+  font-weight: 700;
 }
 
-@utility primary-color {
+p {
+  color: var(--paragraph-color);
+}
+
+a {
   color: var(--primary-color);
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
+/* ─────────────────────────────────────────
+   LAYOUT
+   ───────────────────────────────────────── */
+
+.app {
+  margin: 0 auto;
+  padding: 0;
+  width: min(1200px, 100% - 2rem);
+}
+.section {
+  padding: clamp(2.9rem, 4.8vw, 4.7rem) 0 0.5rem;
+}
+
+.hero {
+  padding-top: clamp(3.8rem, 7vw, 6.4rem);
+}
+
+/* ─────────────────────────────────────────
+   TAILWIND CUSTOM UTILITIES
+   ───────────────────────────────────────── */
 @utility trans {
   transition: all 0.3s ease-in-out;
 }
@@ -44,21 +113,54 @@
   display: inline-block;
   padding: 0.75rem 1.5rem;
   border-radius: 0.25rem;
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+  border: 1px solid var(--deep-color);
+  font-weight: 600;
+  cursor: pointer;
   @apply trans;
-  &:hover,
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
+  }
   &:active {
-    background-color: var(--primary-color);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    opacity: 0.85;
   }
 }
 
-.app {
-  margin: 0 auto;
-  padding: 0;
-  box-sizing: border-box;
-  width: min(1200px, 100% - 2rem);
-  font-family: var(--font-family);
+@utility card {
+  background-color: var(--card-color);
+  color: var(--paragraph-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--headline-color);
+  }
 }
 
-.section {
-  width: clamp(20rem, 90%, 1200px);
+@utility tag {
+  display: flex;
+  background-color: var(--bg-color);
+  color: var(--headline-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.625rem;
+}
+
+@utility nav-link {
+  display: inline-block;
+  @apply trans;
+  &:hover {
+    color: var(--paragraph-color);
+  }
 }

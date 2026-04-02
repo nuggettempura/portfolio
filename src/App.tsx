@@ -1,4 +1,3 @@
-import './App.css'
 import Contact from './components/Contact'
 import HeroSection from './components/HeroSection'
 import Navbar from './components/Navbar'
@@ -8,7 +7,7 @@ import WorkExperience from './components/WorkExperience'
 function App() {
 
   return (
-    <div className='container mx-auto app'>
+    <div className='app'>
       <Navbar />
       <HeroSection />
       <Skills />

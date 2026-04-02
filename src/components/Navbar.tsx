@@ -1,23 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react'
 
+interface NavLink {
+    label: string;
+    href: string;
+}
+
 const Navbar = () => {
-    const [visible, setVisible] = useState(false);
-    const lastScrollY = useRef(0);
+    const [visible, setVisible] = useState<boolean>(false);
+    const [isMobile, setIsMobile] = useState<boolean>(false);
+    const [menuOpen, setMenuOpen] = useState<boolean>(false)
+    const lastScrollY = useRef<number>(0);
 
     useEffect(() => {
-        const handleScroll = () => {
+        const handleScroll = (): void => {
             const currentScrollY = window.scrollY;
 
             if (currentScrollY > lastScrollY.current) {
-                // scroll down should show navbar
                 setVisible(true);
             } else {
-                // Scrolling UP → hide navbar
                 setVisible(false);
             }
-
             if (currentScrollY === 0) {
-                // Reached the top → hide navbar after a brief delay
                 setTimeout(() => setVisible(false), 800);
             }
 
@@ -28,17 +31,63 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    useEffect(() => {
+        const handleResize = (): void => {
+            setIsMobile(window.innerWidth < 768)
+        }
+        handleResize();
+        window.addEventListener('resize', handleResize)
+        return () => window.addEventListener('resize', handleResize)
+    }, [])
+
+    const navLinks: NavLink[] = [
+        { label: 'About', href: '#about' },
+        { label: 'Skills', href: '#skills' },
+        { label: 'Work Experience', href: '#work-experience' },
+        { label: 'Contact', href: '#contact' }
+    ]
+
     return (
-        // i want to make the navbar to be fixed at the top of the page and only show when the user scrolls down, and hide when the user scrolls up, and also hide when the user reaches the top of the page. i also want to add a transition effect when the navbar slides in and out of view. i also want to add a delay when the user reaches the top of the page before hiding the navbar. After scrolled down, the navbar should be visible, but after some time it will scroll back up if there is not change in the scroll position. The navbar should only be visible when the user is actively scrolling down, and it should hide when the user scrolls up or reaches the top of the page.
-        <nav className={`section relative top-0 left-0 right-0 z-50 p-4 flex rounded-2xl justify-between items-center bg-white shadow-md transition-transform duration-300'}`}>
-            <h1 className='p-0 m-0 text-2xl'>Adam Halid</h1>
-            <ul className='flex justify-between items-center gap-10'>
-                <li className='py-2 px-4 hover:bg-blue-400 transition-all border-blue-500 rounded-full hover:text-white'>About</li>
-                <li className='py-2 px-4 hover:bg-blue-400 transition-all border-blue-500 rounded-full hover:text-white'>Skills</li>
-                <li className='py-2 px-4 hover:bg-blue-400 transition-all border-blue-500 rounded-full hover:text-white'>Work Experience</li>
-                <li className='py-2 px-4 hover:bg-blue-400 transition-all border-blue-500 rounded-full hover:text-white'>Experience</li>
-                <li className='py-2 px-4 hover:bg-blue-400 transition-all border-blue-500 rounded-full hover:text-white'>Contact</li>
-            </ul>
+        <nav className='w-full relative'>
+            <div className='relative flex justify-between items-center p-4'>
+                <h1 className='text-headling'>Adam Halid</h1>
+
+                {/* Desktop Links */}
+                {!isMobile && (
+                    <ul className='flex items-center gap-10'>
+                        {navLinks.map((link: NavLink) => (
+                            <li key={link.href} className='cursor-pointer'>
+                                <a href={link.href} target='_blank' className='text-paragraph hover:text-tertiary trans'>
+                                    {link.label}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+                {isMobile && (
+                    <button onClick={() => setMenuOpen((prev: boolean) => !prev)} className='w-10 h-10 rounded-full bg-tertiary flex items-center justify-center cursor-pointer' aria-label='Toggle Menu'>
+                        <span className='flex items-center justify-center gap-[3px]'>
+                            <span className='w-1 h-1 rounded-full bg-bg block' />
+                            <span className='w-1 h-1 rounded-full bg-bg block' />
+                            <span className='w-1 h-1 rounded-full bg-bg block' />
+                        </span>
+                    </button>
+                )}
+            </div>
+            {isMobile && (
+                <ul className={`
+                    absolute top-full left-0 w-full z-50 flex flex-col gap-4 px-6 overflow-hidden trans ease-in-out $ 
+                    ${menuOpen ? 'max-h-64 py-6 opacity-100' : 'max-h-0 py-0 opacity-0'}`
+                }>
+                    {navLinks.map((link: NavLink) => (
+                        <li key={link.href} className='cursor-pointer'>
+                            <a href={link.href} className='text-paragraph hover:text-primary trans' onClick={() => setMenuOpen(false)}>
+                                {link.label}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </nav>
     )
 }

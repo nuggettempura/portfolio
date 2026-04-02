@@ -26,14 +26,13 @@ const Skills = () => {
         { name: 'PostgreSQL', icon: postgresqlIcon },
         { name: 'NginX', icon: nginxIcon },
     ]
-    console.log({ reactIcon, htmlIcon, scssIcon, javascriptIcon, typescriptIcon, angularIcon, tailwindcssIcon, expressjsIcon, graphqlIcon, postgresqlIcon, nginxIcon })
     return (
-        <section className='section pb-4 py-4'>
+        <section className='section'>
             <h2 className='text-2xl pb-[12.5px]'>Tech Stack</h2>
-            <p className='py-4 px-4'>I use modern web technologies to build responsive, scalable, and production-ready applications</p>
+            <p className='py-4'>I use modern web technologies to build responsive, scalable, and production-ready applications</p>
             <div className='flex flex-wrap items-center gap-4'>
                 {skills.map((skill, index) => (
-                    <div key={index} className='flex items-center gap-1 py-3 px-7 border border-blue-200 rounded-2xl max-w-[40] transtion-all hover:bg-blue-500 border-blue-500 hover:text-white hover:box-shadow-lg'>
+                    <div key={index} className='tag'>
                         <img src={skill.icon} alt={skill.name} className='w-5 h-5 mr-2' />
                         <span>{skill.name}</span>
                     </div>
