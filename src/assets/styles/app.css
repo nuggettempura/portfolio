@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+:root {
+  --font-size: 16px;
+  --font-family: "Manrope", sans-serif;
+  --primary-color: #f9bc60;
+  --headline-color: #fffffe;
+  --color: #abd1c6;
+  --base-white-color: #abd1c6;
+  --base-black-color: #0f3433;
+  --bg-color: #004643;
+}
+
+@theme {
+  --color-primary: #f9bc60;
+  --color-headline: #fffffe;
+  --color-base: #abd1c6;
+  --color-base-white: #abd1c6;
+  --color-base-black: #0f3433;
+  --color-bg: #004643;
+
+  --font-size-base: 16px;
+  --font-family-sans: "Manrope", sans-serif;
+}
+
+@utility bg-color {
+  background-color: var(--bg-color);
+}
+
+@utility headline-color {
+  color: var(--headline-color);
+}
+
+@utility primary-color {
+  color: var(--primary-color);
+}
+
+@utility trans {
+  transition: all 0.3s ease-in-out;
+}
+
+@utility primary-button {
+  position: relative;
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+  @apply trans;
+  &:hover,
+  &:active {
+    background-color: var(--primary-color);
+  }
+}
+
+.app {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  width: min(1200px, 100% - 2rem);
+  font-family: var(--font-family);
+}
+
+.section {
+  width: clamp(20rem, 90%, 1200px);
+}
