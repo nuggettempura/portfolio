@@ -56,7 +56,7 @@ export const workExperienceData: CardData[] = [
     company: "The Access Group",
     title: "Frontend Developer",
     description:
-      "Develop and maintain recruitment websites using HTML, SCSS, JavaScript, jQuery, and Shopify Liquid. Create new websites for clients, redesign existing sites, and implement additional features or updates. Use Shopify Liquid and the company’s CMS to build and customize templates. Regularly manage 2–3 client website updates per week and contribute to approximately one new website or redesign project each month.",
+      "1. Develop and maintain recruitment websites using HTML, SCSS, JavaScript, jQuery, and Shopify Liquid. \n 2. Create new websites for clients, redesign existing sites, and implement additional features or updates. \n 3. Use Shopify Liquid and the company’s CMS to build and customize templates. \n 4. Regularly manage 2–3 client website updates per week and contribute to approximately one new website or redesign project each month.",
     techStack: ["Shopify Liquid", "jQuery", "JavaScript", "SASS", "CSS"],
     duration: {
       start: new Date("2025-01-06"),
@@ -68,7 +68,7 @@ export const workExperienceData: CardData[] = [
     company: "IFCA MSC BHD",
     title: "Software Engineer (Full Stack)",
     description:
-      "Develop and maintain full-stack applications using TypeScript, React, Angular, Node.js, C# .NET, and PostgreSQL. Work in an Agile team to deliver features and improvements, averaging four tasks per week.Improve application security by mitigating XSS and CSRF vulnerabilities, eliminating critical and high-risk issues. Implement and configure e-invoicing integrations for 100+ clients, ensuring secure system connections.",
+      "1. Develop and maintain full-stack applications using TypeScript, React, Angular, Node.js, C# .NET, and PostgreSQL. \n 2. Work in an Agile team to deliver features and improvements, averaging four tasks per week. \n 3. Improve application security by mitigating XSS and CSRF vulnerabilities, eliminating critical and high-risk issues. \n 4. Implement and configure e-invoicing integrations for 100+ clients, ensuring secure system connections.",
     techStack: [
       "React",
       "Angular",

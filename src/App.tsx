@@ -3,6 +3,9 @@ import HeroSection from './components/HeroSection'
 import Navbar from './components/Navbar'
 import Skills from './components/Skills'
 import WorkExperience from './components/WorkExperience'
+import 'swiper/swiper-bundle.css'
+import 'swiper/swiper.css';
+
 
 function App() {
 

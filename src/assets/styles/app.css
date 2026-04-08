@@ -187,3 +187,16 @@ a {
     color: var(--paragraph-color);
   }
 }
+
+/* custom styling */
+.swiper-pagination {
+  position: relative;
+  top: 5px !important;
+}
+.swiper-pagination-bullet {
+  width: 0.64rem;
+  height: 0.64rem;
+}
+.swiper-pagination-bullet-active {
+  background-color: var(--primary-color);
+}
