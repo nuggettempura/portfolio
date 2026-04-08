@@ -1,5 +1,3 @@
-import React from 'react'
-
 const HeroSection = () => {
     return (
         <section id="about" className='hero t-10 pb-10 max-w-[50%] flex flex-col gap-4 p-4 md:max-w-full'>
