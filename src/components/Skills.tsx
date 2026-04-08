@@ -1,8 +1,9 @@
+import { motion } from "motion/react";
 import { skills } from "../data"
 
 const Skills = () => {
     return (
-        <section id="skills" className='section'>
+        <motion.section id="skills" className='section' initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}>
             <h2 className='text-2xl pb-[12.5px]'>Tech Stack</h2>
             <p className='py-4'>I use modern web technologies to build responsive, scalable, and production-ready applications</p>
             <div className='flex flex-wrap items-center gap-4'>
@@ -13,7 +14,7 @@ const Skills = () => {
                     </div>
                 ))}
             </div>
-        </section>
+        </motion.section>
     )
 }
 

@@ -17,6 +17,8 @@ import shopifyLiquidIcon from "@images/shopify.svg";
 import linuxIcon from "@images/linux.svg";
 import githubIcon from "@images/github.svg";
 import linkedinIcon from "@images/linkedin.svg";
+import dinoGame from "@images/dino-game.png";
+import spotifyClone from "@images/spotify-clone.png";
 
 export interface NavLink {
   label: string;
@@ -41,6 +43,12 @@ interface ContactData {
   link: string;
   icon: string;
   linkName: string;
+}
+
+export interface ProjectData {
+  name: string;
+  image: string;
+  link: string;
 }
 
 export const navLinks: NavLink[] = [
@@ -119,5 +127,18 @@ export const contactData: ContactData[] = [
     link: "https://www.linkedin.com/in/adam-halid/",
     icon: linkedinIcon,
     linkName: "LinkedIn Link",
+  },
+];
+
+export const projects: ProjectData[] = [
+  {
+    name: "Dino Game",
+    link: "https://github.com/nuggettempura/Dino-Game",
+    image: dinoGame,
+  },
+  {
+    name: "Spotify Clone",
+    link: "https://github.com/nuggettempura/Spotify-Clone",
+    image: spotifyClone,
   },
 ];

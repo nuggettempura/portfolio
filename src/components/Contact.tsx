@@ -1,8 +1,9 @@
+import { motion } from "motion/react"
 import { contactData } from "../data"
 
 const Contact = () => {
     return (
-        <section id="contact" className='section'>
+        <motion.section id="contact" className='section' initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: "easeOut" }} viewport={{ once: true }}>
             <div className='p-4 bg-deep rounded-sm flex justify-between items-center'>
                 <p className='text-main'>
                     @2026 Adam Halid
@@ -15,7 +16,7 @@ const Contact = () => {
                     ))}
                 </div>
             </div>
-        </section>
+        </motion.section>
     )
 }
 
