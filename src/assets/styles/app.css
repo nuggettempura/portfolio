@@ -2,21 +2,21 @@
 @import "./fonts.css";
 
 /* ─────────────────────────────────────────
-   THEME — Tailwind v4 design tokens
+   THEME — Tailwind v4
    ───────────────────────────────────────── */
 @theme {
-  --color-bg: #004643;
-  --color-surface: #e8e4e6;
-  --color-card: #0f3433;
-  --color-deep: #001e1d;
+  --color-bg: #0e0e10;
+  --color-surface: #27272b;
+  --color-card: #1c1c1f;
+  --color-deep: #060607;
 
   --color-headline: #fffffe;
-  --color-paragraph: #abd1c6;
-  --color-heading-dark: #001e1d;
+  --color-paragraph: #8a8a90;
+  --color-heading-dark: #e4e4e6;
 
-  --color-primary: #f9bc60;
-  --color-primary-text: #001e1d;
-  --color-tertiary: #e16162;
+  --color-primary: #5aff6e;
+  --color-primary-text: #0a1f0d;
+  --color-tertiary: #3d6bff;
 
   --font-family: "Manrope", sans-serif;
   --font-size-base: 16px;
@@ -26,18 +26,18 @@
    CSS CUSTOM PROPERTIES
    ───────────────────────────────────────── */
 :root {
-  --bg-color: #004643;
-  --surface-color: #e8e4e6;
-  --card-color: #0f3433;
-  --deep-color: #001e1d;
+  --bg-color: #0e0e10;
+  --surface-color: #27272b;
+  --card-color: #1c1c1f;
+  --deep-color: #060607;
 
   --headline-color: #fffffe;
-  --paragraph-color: #abd1c6;
-  --heading-dark-color: #001e1d;
+  --paragraph-color: #8a8a90;
+  --heading-dark-color: #e4e4e6;
 
-  --primary-color: #f9bc60;
-  --primary-text-color: #001e1d;
-  --tertiary-color: #e16162;
+  --primary-color: #5aff6e;
+  --primary-text-color: #0a1f0d;
+  --tertiary-color: #3d6bff;
 
   --font-family: "Manrope", sans-serif;
   --font-size: 16px;
@@ -98,7 +98,7 @@ a {
 }
 
 .hero {
-  padding-top: clamp(3.8rem, 7vw, 6.4rem);
+  padding-top: clamp(3.8rem, 7vw, 3rem);
 }
 
 /* ─────────────────────────────────────────
@@ -196,6 +196,7 @@ a {
 .swiper-pagination-bullet {
   width: 0.64rem;
   height: 0.64rem;
+  background-color: var(--surface-color);
 }
 .swiper-pagination-bullet-active {
   background-color: var(--primary-color);

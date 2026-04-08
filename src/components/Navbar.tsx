@@ -1,10 +1,54 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { navLinks } from '../data';
 import type { NavLink } from '../data';
 
+const HIDE_DELAY = 3000;
+
 const Navbar = () => {
+    const [visible, setVisible] = useState(false);
     const [isMobile, setIsMobile] = useState<boolean>(false);
     const [menuOpen, setMenuOpen] = useState<boolean>(false)
+
+    const lastScrollY = useRef(0);
+    const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+    const clearHideTimer = () => {
+        if (hideTimer.current) {
+            clearTimeout(hideTimer.current);
+            hideTimer.current = null;
+        }
+    }
+
+    const scheduleHide = () => {
+        clearHideTimer();
+        hideTimer.current = setTimeout(() => setVisible(false), HIDE_DELAY)
+    }
+
+    useEffect(() => {
+        const handleScroll = (): void => {
+            const currentY = window.scrollY;
+            const delta = currentY - lastScrollY.current;
+
+            if (currentY <= 0) {
+                clearHideTimer();
+                setVisible(false);
+            } else if (delta > 0) {
+                setVisible(true);
+                scheduleHide();
+            } else if (delta < 0) {
+                clearHideTimer();
+                setVisible(false);
+            }
+
+            lastScrollY.current = currentY;
+        }
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return (() => {
+            window.removeEventListener('scroll', handleScroll);
+            clearHideTimer();
+        })
+    })
 
     useEffect(() => {
         const handleResize = (): void => {
@@ -12,12 +56,13 @@ const Navbar = () => {
         }
         handleResize();
         window.addEventListener('resize', handleResize)
-        return () => window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
     }, [])
+
     return (
-        <nav className='w-full relative'>
-            <div className='relative flex justify-between items-center p-4'>
-                <h1 className='text-headling'>Adam Halid</h1>
+        <nav className='w-full sticky top-3 z-10' style={{ opacity: visible ? 1 : 0, pointerEvents: visible ? 'auto' : 'none', transition: visible ? 'opacity 0.4s ease-in-out' : 'opacity 0.15s ease-in-out', backdropFilter: visible ? 'blur(15px)' : 'none' }}>
+            <div className='relative flex justify-between items-center p-4 border rounded-[10px] border-paragraph'>
+                <h1 className='text-headline'>Adam Halid</h1>
 
                 {/* Desktop Links */}
                 {!isMobile && (
