@@ -9,7 +9,7 @@ const HeroSection = () => {
             </div>
             <h1 className="text-5xl">Adam Halid</h1>
             {/* <h2 className='text-2xl'>Software Engineer</h2> */}
-            <p className='text-lg mt-2 mb-2'>Sofwarte Engineer Building Scalable Products</p>
+            <p className='text-lg mt-2 mb-2'>Software Engineer Building Scalable Products</p>
             <div className='flex gap-4'>
                 <button className='primary-button'>
                     <a href="#">View Projects</a>
