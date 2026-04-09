@@ -10,7 +10,7 @@ const Projects = () => {
     return (
         <section id="projects" className="relative section" ref={targetRef} style={{ height: `${projects.length * 100}vh` }}>
             <h2 className="text-xl pb-7.5">Projects</h2>
-            <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+            <div className="sticky top-0 h-screen flex overflow-hidden">
                 <motion.div
                     className="flex"
                     style={{ x }}
@@ -18,14 +18,17 @@ const Projects = () => {
                     {projects.map((project: ProjectData, index: number) => (
                         <div
                             key={index}
-                            className="min-w-screen h-screen flex items-center justify-start"
+                            className="min-w-screen h-screen flex items-center justify-start mx-4"
                             style={{ minWidth: "100vw" }}
                         >
                             <motion.div className="flex flex-col gap-3"
                                 initial={{ opacity: 0, y: 150 }} whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, ease: 'easeOut' }}>
-                                <a href={project.projectLink} className="hover:translate-y-[-10px] trans">
-                                    <img src={project.image} alt={project.name} className="rounded-md" width={1000} height={800} />
+                                <a
+                                    href={project.projectLink} className="hover:translate-y-[-10px] trans"
+                                    target="_blank"
+                                >
+                                    <img src={project.image} alt={project.name} className="rounded-md" />
                                 </a>
                                 <p className="text-xl">{project.name}</p>
                                 <div className="flex flex-wrap gap-3">
