@@ -60,36 +60,38 @@ const Navbar = () => {
     }, [])
 
     return (
-        <nav className='w-full sticky top-3 z-10' style={{ opacity: visible ? 1 : 0, pointerEvents: visible ? 'auto' : 'none', transition: visible ? 'opacity 0.4s ease-in-out' : 'opacity 0.15s ease-in-out', backdropFilter: visible ? 'blur(15px)' : 'none' }}>
-            <div className='relative flex justify-between items-center p-4 border rounded-[10px] border-paragraph'>
-                <h1 className='text-headline'>Adam Halid</h1>
+        <nav className='w-full sticky top-3 z-10'>
+            <div style={{ opacity: visible ? 1 : 0, pointerEvents: visible ? 'auto' : 'none', transition: visible ? 'opacity 0.4s ease-in-out' : 'opacity 0.15s ease-in-out', backdropFilter: visible ? 'blur(15px)' : 'none' }}>
+                <div className='relative flex justify-between items-center p-4 border rounded-[10px] border-paragraph'>
+                    <h1 className='text-headline'>Adam Halid</h1>
 
-                {/* Desktop Links */}
-                {!isMobile && (
-                    <ul className='flex items-center gap-10'>
-                        {navLinks.map((link: NavLink) => (
-                            <li key={link.href} className='cursor-pointer'>
-                                <a href={`#${link.href}`} className='text-paragraph hover:text-tertiary trans'>
-                                    {link.label}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-                {isMobile && (
-                    <button onClick={() => setMenuOpen((prev: boolean) => !prev)} className='w-10 h-10 rounded-full bg-tertiary flex items-center justify-center cursor-pointer' aria-label='Toggle Menu'>
-                        <span className='flex items-center justify-center gap-[3px]'>
-                            <span className='w-1 h-1 rounded-full bg-bg block' />
-                            <span className='w-1 h-1 rounded-full bg-bg block' />
-                            <span className='w-1 h-1 rounded-full bg-bg block' />
-                        </span>
-                    </button>
-                )}
+                    {/* Desktop Links */}
+                    {!isMobile && (
+                        <ul className='flex items-center gap-10'>
+                            {navLinks.map((link: NavLink) => (
+                                <li key={link.href} className='cursor-pointer'>
+                                    <a href={`#${link.href}`} className='text-paragraph hover:text-tertiary trans'>
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                    {isMobile && (
+                        <button onClick={() => setMenuOpen((prev: boolean) => !prev)} className='w-10 h-10 rounded-full bg-primary flex items-center justify-center cursor-pointer' aria-label='Toggle Menu'>
+                            <span className='flex items-center justify-center gap-0.75'>
+                                <span className='w-1 h-1 rounded-full bg-bg block' />
+                                <span className='w-1 h-1 rounded-full bg-bg block' />
+                                <span className='w-1 h-1 rounded-full bg-bg block' />
+                            </span>
+                        </button>
+                    )}
+                </div>
             </div>
             {isMobile && (
                 <ul className={`
-                    absolute top-full left-0 w-full z-50 flex flex-col gap-4 px-6 overflow-hidden trans ease-in-out $ 
-                    ${menuOpen ? 'max-h-64 py-6 opacity-100' : 'max-h-0 py-0 opacity-0'}`
+                    absolute top-full left-0 w-full z-50 flex flex-col gap-4 px-6 overflow-hidden trans ease-in-out 
+                    ${menuOpen ? 'max-h-64 py-6 opacity-100 mt-4 rounded-[10px] border border-paragraph backdrop-blur-md' : 'max-h-0 py-0 opacity-0'}`
                 }>
                     {navLinks.map((link: NavLink) => (
                         <li key={link.href} className='cursor-pointer'>
