@@ -2,7 +2,6 @@ import { motion, useScroll, useTransform } from "motion/react"
 import { projects } from "../data"
 import type { ProjectData } from "../data"
 import { useRef } from "react"
-import { div, span } from "motion/react-client"
 
 const Projects = () => {
     const targetRef = useRef(null);
