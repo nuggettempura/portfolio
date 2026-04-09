@@ -1,27 +1,49 @@
-// import { motion, useScroll, useTransform } from "motion/react"
-// import { projects } from "../data"
-// import type { ProjectData } from "../data"
-// import { useRef } from "react"
+import { motion, useScroll, useTransform } from "motion/react"
+import { projects } from "../data"
+import type { ProjectData } from "../data"
+import { useRef } from "react"
+import { div, span } from "motion/react-client"
 
-// const Projects = () => {
-//     const targetRef = useRef(null);
-//     const { scrollYProgress } = useScroll({ target: targetRef });
-//     const x = useTransform(scrollYProgress, [0, 1], ["0%", "-55"])
-//     return (
-//         <section id="projects" className='relative' ref={targetRef}>
-//             <h2 className="section text-2xl"></h2>
-//             {projects.map((project: ProjectData, index: number) => (
-//                 <motion.div className="h-[500vh]" key={index}>
-//                     <div className="h-[100vh] sticky top-0 flex items-center justify-start"></div>
-//                     <img src={project.image} alt="Project Image" />
-//                     <p className="text-xl">{project.name}</p>
-//                     <button className="primary-button">
-//                         <a href={project.link} target="_blank"></a>
-//                     </button>
-//                 </motion.div>
-//             ))}
-//         </section>
-//     )
-// }
+const Projects = () => {
+    const targetRef = useRef(null);
+    const { scrollYProgress } = useScroll({ target: targetRef });
+    const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(projects.length - 1) * 100}vw`]);
+    return (
+        <section id="projects" className="relative section" ref={targetRef} style={{ height: `${projects.length * 100}vh` }}>
+            <h2 className="text-xl pb-7.5">Projects</h2>
+            <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+                <motion.div
+                    className="flex"
+                    style={{ x }}
+                >
+                    {projects.map((project: ProjectData, index: number) => (
+                        <div
+                            key={index}
+                            className="min-w-screen h-screen flex items-center justify-start"
+                            style={{ minWidth: "100vw" }}
+                        >
+                            <motion.div className="flex flex-col gap-3"
+                                initial={{ opacity: 0, y: 150 }} whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, ease: 'easeOut' }}>
+                                <a href={project.projectLink} className="hover:translate-y-[-10px] trans">
+                                    <img src={project.image} alt={project.name} className="rounded-md" width={1000} height={800} />
+                                </a>
+                                <p className="text-xl">{project.name}</p>
+                                <div className="flex flex-wrap gap-3">
+                                    {project.techStack.map((tech, i) => (
+                                        <span className="tag" key={i}>
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                                <p className="text-paragraph">{project.description}</p>
+                            </motion.div>
+                        </div>
+                    ))}
+                </motion.div>
+            </div>
+        </section>
+    );
+};
 
-// export default Projects
+export default Projects

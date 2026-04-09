@@ -49,13 +49,16 @@ export interface ProjectData {
   name: string;
   image: string;
   link: string;
+  description: string;
+  techStack: string[];
+  projectLink: string;
 }
 
 export const navLinks: NavLink[] = [
   { label: "About", href: "about" },
   { label: "Skills", href: "skills" },
   { label: "Work Experience", href: "work-experience" },
-  //   { label: "Projects", href: "projects" },
+  { label: "Projects", href: "projects" },
   { label: "Contact", href: "contact" },
 ];
 
@@ -135,10 +138,17 @@ export const projects: ProjectData[] = [
     name: "Dino Game",
     link: "https://github.com/nuggettempura/Dino-Game",
     image: dinoGame,
+    description:
+      "A simple dino game built with HTML CSS and JS. This project mainly challenges my understanding of DOM interaction",
+    techStack: ["HTML", "CSS", "JavaScript"],
+    projectLink: "https://github.com/nuggettempura/Dino-Game",
   },
   {
     name: "Spotify Clone",
     link: "https://github.com/nuggettempura/Spotify-Clone",
     image: spotifyClone,
+    description: "Imitating Spotifys UI with CSS",
+    techStack: ["HTML", "CSS", "JavaScript"],
+    projectLink: "https://github.com/nuggettempura/Spotify-Clone",
   },
 ];
