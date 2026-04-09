@@ -29,7 +29,7 @@ function App() {
       <Skills />
       <WorkExperience />
       <Projects />
-      <Contact />
+      <Contact theme={theme} />
     </div>
   )
 }
