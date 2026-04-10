@@ -14,7 +14,7 @@ const WorkExperienceCard = () => {
         <Swiper
             modules={[Pagination]}
             grabCursor
-            initialSlide={1}
+            initialSlide={0}
             centeredSlides
             slidesPerView={1}
             spaceBetween={50}
