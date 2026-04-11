@@ -42,7 +42,7 @@ const Projects = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, ease: 'easeOut' }}>
                                 <a
-                                    href={project.projectLink} className="hover:translate-y-[-10px] trans"
+                                    href={project.projectLink} className="hover:translate-y-2.5trans"
                                     target="_blank"
                                 >
                                     <img src={project.image} alt={project.name} width={1140} className="rounded-md bg-cover" />

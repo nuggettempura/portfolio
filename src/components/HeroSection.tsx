@@ -11,9 +11,7 @@ const HeroSection = () => {
             {/* <h2 className='text-2xl'>Software Engineer</h2> */}
             <p className='text-lg mt-2 mb-2'>Software Engineer Building Scalable Products</p>
             <div className='flex gap-4'>
-                <button className='primary-button'>
-                    <a href="#">View Projects</a>
-                </button>
+                <a href="#projects" className="primary-button">View Projects</a>
             </div>
         </motion.section>
     )
