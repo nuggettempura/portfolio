@@ -3,7 +3,7 @@ import { workExperienceData } from "../data"
 
 const formatDuration = ({ start, end }: DateRange): string => {
     const format = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
-    return `${format(start)} – ${format(end)}`
+    return `${format(start)} – ${end ? format(end) : 'Present'}`
 }
 
 const descriptionLines = (description: string): string[] =>

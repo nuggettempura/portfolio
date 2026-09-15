@@ -30,7 +30,7 @@ export interface NavLink {
 
 export type DateRange = {
   start: Date;
-  end: Date;
+  end: Date | null;
 };
 
 export interface CardData {
@@ -74,7 +74,7 @@ export const workExperienceData: CardData[] = [
     companyImage: solsEnergy,
     duration: {
       start: new Date("2026-05-18"),
-      end: new Date("2026-07-31"),
+      end: null,
     },
     techStack: ["React", "TypeScript", "Firebase", "Tailwind", "Vercel"],
   },
