@@ -1,19 +1,36 @@
 import { motion } from "motion/react"
+import { contactData } from "../data"
 
 const HeroSection = () => {
     return (
-        <motion.section id="about" className='hero t-10 pb-10 flex flex-col gap-4 p-4' initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, ease: "easeOut" }}>
-            <div className="flex flex-wrap justify-start gap-6">
-                <p className="tag w-max text-md">Full Stack Software Engineer</p>
-                <p className="tag w-max text-md">Frontend Developer</p>
-            </div>
-            <h1 className="text-5xl">Adam Halid</h1>
-            {/* <h2 className='text-2xl'>Software Engineer</h2> */}
-            <p className='text-lg mt-2 mb-2'>Software Engineer Building Scalable Products</p>
-            <div className='flex gap-4'>
-                <button className='primary-button'>
-                    <a href="#">View Projects</a>
-                </button>
+        <motion.section
+            id="about"
+            className="hero timeline-pad flex flex-col gap-5"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+        >
+            <p className="text-sm text-soft">Software engineer</p>
+
+            <h1 className="font-display font-semibold" style={{ fontSize: "clamp(2.75rem, 7vw, 4.5rem)", lineHeight: 1.02, letterSpacing: "-0.02em" }}>
+                Adam Halid
+            </h1>
+
+            <p className="text-lg" style={{ maxWidth: "38ch" }}>
+                Frontend &amp; full-stack engineer. I build and maintain client and internal
+                products across the stack — from Shopify storefronts to full-stack apps in
+                React, Node and PostgreSQL.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-6 pt-2">
+                <a href="#work-experience" className="button">View work</a>
+                <div className="flex items-center gap-5">
+                    {contactData.map((c, i) => (
+                        <a href={c.link} target="_blank" rel="noreferrer" className="link-soft trans text-sm" key={i}>
+                            {c.linkName.replace(" Link", "")}
+                        </a>
+                    ))}
+                </div>
             </div>
         </motion.section>
     )
