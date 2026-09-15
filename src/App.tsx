@@ -5,8 +5,6 @@ import Navbar from './components/Navbar'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
 import WorkExperience from './components/WorkExperience'
-import 'swiper/swiper-bundle.css'
-import 'swiper/swiper.css';
 
 type Theme = 'dark' | 'light';
 
@@ -23,14 +21,16 @@ function App() {
   const handleToggleTheme = () => setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
 
   return (
-    <div className='app'>
+    <>
       <Navbar theme={theme} onToggleTheme={handleToggleTheme} />
-      <HeroSection />
-      <Skills />
-      <WorkExperience />
-      <Projects />
-      <Contact theme={theme} />
-    </div>
+      <div className='app timeline'>
+        <HeroSection />
+        <Skills />
+        <WorkExperience />
+        <Projects />
+      </div>
+      <Contact />
+    </>
   )
 }
 
